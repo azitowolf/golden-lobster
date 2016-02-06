@@ -6,7 +6,7 @@ var client = amazon.createClient({
 	awsTag: process.env['AmazonAssociatesTag']
 });
 
-client.itemSearch({  
+client.itemSearch({
   director: 'Quentin Tarantino',
   actor: 'Samuel L. Jackson',
   searchIndex: 'DVD',

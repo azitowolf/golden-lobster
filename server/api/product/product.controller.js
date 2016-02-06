@@ -11,6 +11,13 @@
 
 import _ from 'lodash';
 import Product from './product.model';
+var amazon = require('amazon-product-api');
+
+var client = amazon.createClient({
+	awsId: process.env['AWSAccessKeyId'],
+	awsSecret: process.env['AWSSecretKey'],
+	awsTag: process.env['AmazonAssociatesTag']
+});
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -61,9 +68,17 @@ function handleError(res, statusCode) {
 
 // Gets a list of Products
 export function index(req, res) {
+  var keywords = req.query.keywords
+  client.itemSearch({
+    keywords: keywords,
+    responseGroups: 'TopSellers'
+  }).then(respondWithResult(res){
+  }).catch(handleError(res));
+  /*
   Product.findAsync()
     .then(respondWithResult(res))
     .catch(handleError(res));
+    */
 }
 
 // Gets a single Product from the DB
