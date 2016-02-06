@@ -1,4 +1,4 @@
-environment.sh
+node_modules
 public
 .tmp
 .sass-cache
@@ -8,3 +8,5 @@ dist
 /server/config/local.env.js
 npm-debug.log
 coverage
+
+environment.sh
