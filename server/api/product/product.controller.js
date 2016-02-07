@@ -69,11 +69,13 @@ function handleError(res, statusCode) {
 // Gets a list of Products
 export function index(req, res) {
   var keywords = req.query.keywords
+  console.log('asdasdasdsa')
   client.itemSearch({
     keywords: keywords,
     responseGroups: 'TopSellers'
-  }).then(respondWithResult(res){
-  }).catch(handleError(res));
+  })
+    .then(respondWithResult(res))
+    .catch(handleError(res));
   /*
   Product.findAsync()
     .then(respondWithResult(res))
